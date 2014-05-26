@@ -1,0 +1,26 @@
+<div class="container">
+      <div class="blog-header">
+        <h2 class="blog-title">Listing articles</h1>
+      </div>
+      <button type="button" class="btn btn-default"><%= link_to 'New_article', new_article_path %></button>
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <% @articles.each do |article| %>
+            <div class="blog-post">
+              <hr />
+              <h3 class="blog-post-title"><%= article.title %></h3>
+              <p><div><%= image_tag(article.user.avatar, :size => '100x100')%></div><div><%= article.user.email %></div></p>
+              <p><%= article.text %></p>
+              <a><%= link_to 'Show', article_path(article) %></a>
+              
+              <% if article.user.eql? current_user %>
+                 | <a><%= link_to 'Edit', edit_article_path(article) %></a>
+                 | <a><%= link_to 'Destroy', article_path(article),
+                      method: :delete, data: { confirm: 'Are you sure?' } %></a>
+              <% end %>
+            </div>
+          <% end %>
+
+        </div><!-- /.blog-main -->
+      </div><!-- /.row -->
+</div><!-- /.container -->

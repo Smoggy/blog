@@ -1,0 +1,22 @@
+<div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+            <div class="blog-post">
+              <br /><h3 class="blog-post-title"><%= @article.title %></h3>
+              <p><div><%= image_tag(@article.user.avatar, :size => '100x100')%></div><div><%= @article.user.email %></div></p>
+              <p><%= @article.text %></p>
+            </div>
+         <div>
+	        <h3>Comments</h3>
+			<%= render @article.comments %>
+	 
+			<h3>Add a comment:</h3>
+			<%= render "comments/form" %>
+		</div>
+    <% if @article.user.eql? current_user %>
+        <%= link_to 'Edit Article', edit_article_path(@article) %> | 
+    <% end %>
+		<%= link_to 'Back to Articles', articles_path %>
+        </div><!-- /.blog-main -->
+      </div><!-- /.row -->
+</div><!-- /.container -->

@@ -1,0 +1,15 @@
+<div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+            <div class="blog-post">
+              <p><div><%= image_tag(comment.user.avatar, :size => '70x70')%></div><div><%= comment.user.email %></div></p>
+              <p><%= comment.body %></p>
+              <% if comment.user.eql? current_user %>
+                <div><%= link_to 'Destroy Comment', [comment.article, comment],
+                                            method: :delete,
+                                            data: { confirm: 'Are you sure?' } %></div>
+              <% end %>
+            </div>
+        </div><!-- /.blog-main -->
+      </div><!-- /.row -->
+</div><!-- /.container -->
